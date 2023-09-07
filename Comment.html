@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chạy mã JavaScript</title>
+</head><body style='background: #16151d'>
+  <script>
+    // Đoạn mã JavaScript ở đây
+    var VUUKLE_CONFIG = {
+      apiKey: '894f5ceb-ab22-4ee8-a839-d773d4a6afe9',
+      articleId: getArticleIdFromUrl(),
+    };
+
+    function getArticleIdFromUrl() {
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      return urlParams.get('articleId');
+    }
+
+    console.log('articleId:', VUUKLE_CONFIG.articleId);
+
+    // Thay đổi giá trị của thuộc tính src của thẻ iframe
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://rawcdn.githack.com/Nguyenblur/ho-tro-oriaok/580406ed1c1ee9e3146b23aad9f96d314e9e3fd5/binh-luanv1.html?articleId=<data:label.name/>';
+    iframe.width = '680';
+    iframe.height = '480';
+
+    document.body.appendChild(iframe);
+
+    window.addEventListener('load', function() {
+      (function() {
+        var d = document,
+            s = d.createElement('script');
+        s.src = 'https://cdn.vuukle.com/platform.js';
+        (d.head || d.body).appendChild(s);
+      })();
+    });
+  </script>
+</body>
+</html>
